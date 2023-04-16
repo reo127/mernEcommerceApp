@@ -84,11 +84,25 @@ const AddProduct = () => {
                                 />
                             </div>
                             <div className='ml-2'>
-                                <label htmlFor="text" className="block mb-2 text-sm">Catagory</label>
-                                <input type="text" name="text" id="email" className="w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-50 text-gray-800"
-                                    onChange={e => setCatagory(e.target.value)}
-                                    value={catagory}
-                                />
+                            <div className="space-y-2">
+                    <div className="flex">
+                        <div>
+                        </div>
+                        <div className='ml-2'>
+                        <label>Caragory</label>
+                            <select className="py-3 px-4 pr-9 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 "
+                            value={catagory}
+                            onChange={e => setCatagory(e.target.value)}
+                            >
+                                <option selected value="electronic">electronic</option>
+                                <option value="book" >book</option>
+                                <option value="toy">toy</option>
+                                <option value="fashion">fashion</option>
+                                <option value="clothes">clothes</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
                             </div>
                         </div>
 
