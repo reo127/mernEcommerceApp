@@ -9,6 +9,7 @@ const Navber = () => {
     const [productName, setProductName] = useState('')
     const { data } = useGetProfileQuery();
     const [logout] = useLogoutMutation();
+    console.log(data?.user.cart.length)
 
     const handleLogout = () => {
         logout()
@@ -56,7 +57,7 @@ const Navber = () => {
                                 <Link to='/login'><button className="ml-4 inline-flex items-center font-semibold bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"> Login </button></Link></> :
                                 <>
                                     <Link to='/cart' className=" mr-4 ">
-                                        <p className='absolute bg-[#FF9F00] rounded-full w-5 h-4 font-bold text-sm pb-5 text-center'> 3 </p>
+                                        <p className='absolute bg-[#FF9F00] rounded-full w-5 h-4 font-bold text-sm pb-5 text-center'> {data?.user.cart.length} </p>
                                         <img src={cartLogo} alt="cart" className='max-w-[80%] ' />
                                     </Link>
                                     <button className="ml-4 inline-flex items-center font-semibold bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0" onClick={handleLogout}> Logout </button>
