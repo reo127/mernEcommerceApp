@@ -5,7 +5,7 @@ import { userAPI } from './services/userAPI'
 export const store = configureStore({
 
   reducer: {
-    [userAPI.reducerPath]: userAPI.reducer
+    [userAPI.reducerPath]: userAPI.reducer,
   },
 
   middleware: (getDefaultMiddleware) =>

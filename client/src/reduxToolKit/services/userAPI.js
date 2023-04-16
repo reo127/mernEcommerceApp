@@ -5,7 +5,7 @@ export const userAPI = createApi({
     reducerPath: "userAPI",
     baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:8000/api/' }),
     endpoints: (builder) => ({
-
+        tagTypes:['Product', 'User', 'Order'],
         signUp: builder.mutation({
             query: (bodyData) => {
                 console.log(bodyData)
@@ -15,7 +15,8 @@ export const userAPI = createApi({
                     body: bodyData,
                     headers: { "Content-Type": "application/json" }
                 }
-            }
+            },
+            invalidatesTags: ['User']
         }),
         signIn: builder.mutation({
             query: (bodyData) => {
@@ -27,7 +28,8 @@ export const userAPI = createApi({
                     headers: { "Content-Type": "application/json" },
                     credentials: "include"
                 }
-            }
+            },
+            invalidatesTags: ['User']
         }),
         logout: builder.mutation({
             query: () => {
@@ -37,7 +39,8 @@ export const userAPI = createApi({
                     headers: { "Content-Type": "application/json" },
                     credentials: "include"
                 }
-            }
+            },
+            invalidatesTags: ['User']
         }),
         addProduct: builder.mutation({
             query: (formData) => {
@@ -48,7 +51,8 @@ export const userAPI = createApi({
                     credentials: "include",
                     redirect: 'follow'
                 }
-            }
+            },
+            invalidatesTags: ['Product']
         }),
         eaditProduct: builder.mutation({
             query: (body) => {
@@ -58,7 +62,8 @@ export const userAPI = createApi({
                     credentials: "include",
                     body: body
                 }
-            }
+            },
+            invalidatesTags: ['Product']
         }),
         deleteProduct: builder.mutation({
             query: (productId) => {
@@ -67,7 +72,8 @@ export const userAPI = createApi({
                     method: "DELETE",
                     credentials: "include",
                 }
-            }
+            },
+            invalidatesTags: ['Product']
         }),
         getProduct: builder.query({
             query: (productId) => {
@@ -75,7 +81,8 @@ export const userAPI = createApi({
                     url: `product/${productId}`,
                     method: "get",
                 }
-            }
+            },
+            providesTags: ['Product']
         }),
         getAllProduct: builder.query({
             query: () => {
@@ -83,7 +90,8 @@ export const userAPI = createApi({
                     url: "products/getallproducts",
                     method: "get",
                 }
-            }
+            },
+            providesTags: ['Product']
         }),
         getProductByCatagory: builder.query({
             query: (catagoryName) => {
@@ -92,7 +100,8 @@ export const userAPI = createApi({
                     url: `products/${catagoryName}`,
                     method: "get",
                 }
-            }
+            },
+            providesTags: ['Product']
         }),
         searchProducts: builder.query({
             query: (productName) => {
@@ -100,7 +109,8 @@ export const userAPI = createApi({
                     url: `products/search/${productName}`,
                     method: "get",
                 }
-            }
+            },
+            providesTags: ['Product']
         }),
         getProfile: builder.query({
             query: () => {
@@ -110,7 +120,8 @@ export const userAPI = createApi({
                     headers: { "Content-Type": "application/json" },
                     credentials: 'include',
                 }
-            }
+            },
+            providesTags: ['User']
         }),
         updateProfile: builder.mutation({
             query: (body) => {
@@ -120,7 +131,8 @@ export const userAPI = createApi({
                     credentials: "include",
                     body: body
                 }
-            }
+            },
+            invalidatesTags: ['User']
         }),
         orderd: builder.mutation({
             query: (body) => {
@@ -130,7 +142,8 @@ export const userAPI = createApi({
                     credentials: "include",
                     body: body
                 }
-            }
+            },
+            invalidatesTags: ['Order']
         }),
         getOrders: builder.query({
             query: () => {
@@ -140,7 +153,8 @@ export const userAPI = createApi({
                     headers: { "Content-Type": "application/json" },
                     credentials: 'include',
                 }
-            }
+            },
+            providesTags: ['Order']
         }),
         updateOrder: builder.mutation({
             query: ({ status, orderId }) => {
@@ -149,7 +163,8 @@ export const userAPI = createApi({
                     method: "PUT",
                     credentials: "include",
                 }
-            }
+            },
+             invalidatesTags: ['Order']
         }),
         deleteOrder: builder.mutation({
             query: (orderId) => {
@@ -158,7 +173,8 @@ export const userAPI = createApi({
                     method: "DELETE",
                     credentials: "include",
                 }
-            }
+            },
+             invalidatesTags: ['Order']
         }),
         addToCart: builder.mutation({
             query: (productId) => {
@@ -167,7 +183,8 @@ export const userAPI = createApi({
                     method: "POST",
                     credentials: "include",
                 }
-            }
+            },
+            invalidatesTags: ['User']
         }),
         deleteCart: builder.mutation({
             query: (productId) => {
@@ -176,7 +193,8 @@ export const userAPI = createApi({
                     method: "DELETE",
                     credentials: "include",
                 }
-            }
+            },
+            invalidatesTags: ['User']
         }),
     })
 })

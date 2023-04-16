@@ -5,7 +5,6 @@ import { useGetAllProductQuery } from '../reduxToolKit/services/userAPI';
 
 const Home = () => {
   const { data, isSuccess } = useGetAllProductQuery();
-  // console.log(isSuccess && data.allProduct);
 
   return (
     <>
