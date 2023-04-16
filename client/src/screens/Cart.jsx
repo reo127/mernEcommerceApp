@@ -35,7 +35,7 @@ const Cart = () => {
                                         <div className="md:pl-3 md:w-3/4">
                                             <p className="text-xs leading-3 text-gray-800 md:pt-0 pt-4">{cart.catagory}</p>
                                             <div className="flex items-center justify-between w-full pt-1">
-                                                <p className="text-base font-black leading-none text-gray-800"> {cart.name} </p>
+                                            <Link to={`/product/${cart.productId}`}><p className="text-base font-black leading-none text-gray-800"> {cart.name} </p></Link>
                                             </div>
                                             <p className="text-xs leading-3 text-gray-600 pt-2">{cart.description}</p>
                                             <p className="w-96 text-xs leading-3 text-gray-600 mt-4">Only {cart.stock} left</p>

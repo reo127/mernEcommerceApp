@@ -42,6 +42,10 @@ const userSchema = mongoose.Schema({
     },
     cart: [
         {
+            productId: {
+                type: String,
+                required: [true, "error in productId"],
+            },
             name: {
                 type: String,
                 required: [true, "Please provide a product name"],
