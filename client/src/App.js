@@ -18,6 +18,7 @@ import AdminNavber from './components/AdminNavber';
 import EaditProduct from './screens/EaditProduct';
 import EaditProductDetails from './screens/EaditProductDetails';
 import AdminOrders from './screens/AdminOrders';
+import Error from './screens/Error';
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
         <Route path='/admin/eaditproduct' element={<> <Navber /> <AdminNavber/> <EaditProduct/>  </>} />
         <Route path='/admin/eaditproduct/1' element={<> <Navber /> <AdminNavber/> <EaditProductDetails/>  </>} />
         <Route path='/admin/adminorders' element={<> <Navber /> <AdminNavber/> <AdminOrders/>  </>} />
+        <Route path='*' element={<Error/>} />
       </Routes>
 
     </div>
