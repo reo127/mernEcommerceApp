@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { useAddProductMutation } from '../reduxToolKit/services/userAPI'
+import JoditEditor from 'jodit-react';
 
 const AddProduct = () => {
+    const editor = useRef(null)
     const [productName, setProductName] = useState('')
     const [price, setPrice] = useState(12000)
     const [description, setDescription] = useState('')
@@ -55,13 +57,21 @@ const AddProduct = () => {
                                     value={price}
                                 />
                             </div></div>
-                        <div>
+
+                            <JoditEditor 
+                                ref={editor}
+                                value={description}
+                                onChange={dis => setDescription(dis)}
+                            />
+
+                        {/* <div>
                             <label htmlFor="text" className="block mb-2 text-sm">Description</label>
                             <textarea type="text" name="text" id="email" className="w-full px-3 py-2 border resize-y rounded-md border-gray-300 bg-gray-50 text-gray-800"
                                 onChange={e => setDescription(e.target.value)}
                                 value={description}
                             />
-                        </div>
+                        </div> */}
+
                         <div>
                             <label htmlFor="text" className="block mb-2 text-sm">Photos</label>
                             <div className="flex">
@@ -110,6 +120,7 @@ const AddProduct = () => {
                         </div>
                     </div>
                 </form>
+                {description}
             </div>
         </div>
     )
