@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useGetProductQuery, useAddToCartMutation } from '../reduxToolKit/services/userAPI';
+import parse from 'html-react-parser';
 
 
 
@@ -11,6 +12,8 @@ const Product = () => {
 
     const { data } = useGetProductQuery(productId);
     const [addToCart] = useAddToCartMutation();
+    const dis = data?.product.description
+    console.log(dis, " => description is hare")
 
 console.log(data);
 
@@ -27,7 +30,7 @@ console.log(data);
 
 
                             </div>
-                            <p className="leading-relaxed">{data?.product.description}</p>
+                            <p className="leading-relaxed">{parse( (dis !== undefined)? dis : "Loading..." )}</p>
 
                             <div className="flex mt-12">
                                 <span className="mr-4 title-font font-medium text-2xl text-gray-900">₹{data?.product.price}</span>
