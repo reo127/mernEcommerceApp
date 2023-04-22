@@ -7,19 +7,14 @@ const AddProduct = () => {
     const [description, setDescription] = useState('')
     const [photos, setPhotos] = useState([])
     const [stock, setStock] = useState()
-    const [catagory, setCatagory] = useState("")
+    const [catagory, setCatagory] = useState("electronic")
 
     const [addProduct, result] = useAddProductMutation()
 
     const handleUpload = () => {
 
-        // let images = [];
-        // for (let i = 0; i < images.length; i++) {
-        //     images.push(photos)
-        // }
 
-        const formData = new FormData(); 
-
+        const formData = new FormData();         
         formData.append("name", productName)
         formData.append("price", price)
         formData.append("description", description)
@@ -31,7 +26,6 @@ const AddProduct = () => {
 
 
 
-        addProduct(formData)
         console.log('result : ', result);
         console.log(productName);
         console.log(price);
@@ -39,6 +33,7 @@ const AddProduct = () => {
         console.log(photos[0], "Photos is hare");
         console.log(stock);
         console.log(catagory);
+        addProduct(formData)
 
     }
     return (
@@ -88,6 +83,7 @@ const AddProduct = () => {
                     <div className="flex">
                         <div>
                         </div>
+                        
                         <div className='ml-2'>
                         <label>Caragory</label>
                             <select className="py-3 px-4 pr-9 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 "
@@ -102,6 +98,7 @@ const AddProduct = () => {
                             </select>
                         </div>
                     </div>
+
                 </div>
                             </div>
                         </div>

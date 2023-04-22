@@ -19,7 +19,7 @@ const Home = () => {
                     <img alt="ecommerce" className="object-cover object-center w-full h-full block" src={(product?.photos.length > 0) && `http://localhost:8000/${product?.photos[0].path}`} />
                   </div>
                   <div className="mt-4">
-                    <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3>
+                    <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">{product.catagory}</h3>
                     <h2 className="text-gray-900 title-font text-lg font-medium">{product.name}</h2>
                     <p className="mt-1">{product.price}</p>
                   </div>

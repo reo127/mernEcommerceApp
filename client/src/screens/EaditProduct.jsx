@@ -5,6 +5,7 @@ const EaditProduct = () => {
     const [modal, setModal] = useState(false);
     const [prod, setProd] = useState({});
 
+
     const { data, isSuccess } = useGetAllProductQuery();
     const [deleteProduct] = useDeleteProductMutation();
 
@@ -92,7 +93,7 @@ const EaditModal = ({ setModal, prod, setProd }) => {
     const [price, setPrice] = useState(prod.price)
     const [description, setDescription] = useState(prod.description)
     const [stock, setStock] = useState(prod.stock)
-    const [catagory, setcatagory] = useState(prod.catagory)
+    const [catagory, setCatagory] = useState(prod.catagory)
     const [proudctId] = useState(prod._id)
 
     const handleUpdate = () => {
@@ -140,11 +141,17 @@ const EaditModal = ({ setModal, prod, setProd }) => {
                             />
                         </div>
                         <div className='ml-2'>
-                            <label htmlFor="text" className="block mb-2 text-sm">Catagory</label>
-                            <input type="text" name="text" id="email" className="w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-50 text-gray-800"
-                                value={catagory}
-                                onChange={(e) => setcatagory(e.target.value)}
-                            />
+                        <label>Caragory</label>
+                            <select className="py-3 px-4 pr-9 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 "
+                            value={catagory}
+                            onChange={e => setCatagory(e.target.value)}
+                            >
+                                <option selected value="electronic">electronic</option>
+                                <option value="book" >book</option>
+                                <option value="toy">toy</option>
+                                <option value="fashion">fashion</option>
+                                <option value="clothes">clothes</option>
+                            </select>
                         </div>
                     </div>
 
