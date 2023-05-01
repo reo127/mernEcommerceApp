@@ -1,9 +1,11 @@
 import React, {useState} from 'react'
 import { useLocation } from 'react-router-dom';
 import { useGetProfileQuery, useOrderdMutation } from '../reduxToolKit/services/userAPI';
+import Sueccess from '../components/Success'
 
 const CheckOut = () => {
-    const [count, setCount] = useState(0)
+    const [count, setCount] = useState(1)
+    const [success, setSuccess] = useState(false)
     const location = useLocation()
     let productId = location.pathname.split('/').slice(-1)[0]
 
@@ -15,6 +17,7 @@ const CheckOut = () => {
     const handleOrder = (e) => {
         e.preventDefault()
         orderd({productId, count})
+        setSuccess(true)
     }
 
     return (
@@ -91,6 +94,7 @@ const CheckOut = () => {
                                 </button>
                             </div>
                         </form>
+                       {success &&  <Sueccess massage="Order created Successfuly" setSuccess={setSuccess} />}
                     </div>
                 </div>
             </div>
