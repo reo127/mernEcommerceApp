@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { Link, useLocation } from "react-router-dom";
 import {
   useGetProductQuery,
@@ -6,8 +6,10 @@ import {
 } from "../reduxToolKit/services/userAPI";
 import parse from "html-react-parser";
 import Carousel from "react-elastic-carousel";
+import Success from "../components/Success";
 
 const Product = () => {
+  const [success, setSuccess] = useState(false)
   const location = useLocation();
   let productId = location.pathname.split("/").slice(-1)[0];
 
@@ -60,12 +62,14 @@ const Product = () => {
                     className="flex  ml-auto mx-2 text-white bg-[#FF9F00] border-0 py-2 px-6 focus:outline-none hover:bg-[#ffac27] rounded font-bold"
                     onClick={() => {
                       addToCart(productId);
+                      setSuccess(true)
                     }}
                   >
                     ADD TO CART
                   </button>
                 </div>
               </div>
+              {success && <Success massage="Successfuly Product added to your card" setSuccess={setSuccess} />}
             </div>
           </div>
         </div>
