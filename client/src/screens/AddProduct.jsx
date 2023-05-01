@@ -1,9 +1,11 @@
 import React, { useRef, useState } from 'react'
 import { useAddProductMutation } from '../reduxToolKit/services/userAPI'
 import JoditEditor from 'jodit-react';
+import Success from '../components/Success'
 
 const AddProduct = () => {
     const editor = useRef(null)
+    const [success, setSuccess] = useState(false)
     const [productName, setProductName] = useState('')
     const [price, setPrice] = useState(12000)
     const [description, setDescription] = useState('')
@@ -29,13 +31,15 @@ const AddProduct = () => {
 
 
         console.log('result : ', result);
-        console.log(productName);
-        console.log(price);
-        console.log(description);
-        console.log(photos[0], "Photos is hare");
-        console.log(stock);
-        console.log(catagory);
         addProduct(formData)
+        setSuccess(true)
+        setProductName("")
+        setPrice("")
+        setDescription("")
+        setPhotos("")
+        setStock("")
+        setCatagory("")
+
 
     }
     return (
@@ -56,13 +60,23 @@ const AddProduct = () => {
                                     onChange={e => setPrice(e.target.value)}
                                     value={price}
                                 />
-                            </div></div>
+                            </div>
+                            </div>
 
+                            <div>
+                            <label htmlFor="text" className="block mb-2 text-sm">Description</label>
+                            <div className="flex">
                             <JoditEditor 
                                 ref={editor}
                                 value={description}
                                 onChange={dis => setDescription(dis)}
                             />
+                            </div>
+                        </div>
+
+                            
+
+                            
 
                         {/* <div>
                             <label htmlFor="text" className="block mb-2 text-sm">Description</label>
@@ -120,7 +134,7 @@ const AddProduct = () => {
                         </div>
                     </div>
                 </form>
-                {description}
+              {success &&   <Success massage="product added successfuly" setSuccess={setSuccess} />}
             </div>
         </div>
     )
